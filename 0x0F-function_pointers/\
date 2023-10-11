@@ -2,12 +2,11 @@
 #include <stdio.h>
 
 /**
-*print_name - print James using pointer to a function
-*@James: string to print
-*@f: pointer to a function
-*
+*print_James - print James using pointer to function
+@James: string to add
+@f: pointer to function
 *Return: nothing
-*/
+**/
 
 void print_name(char *James, void (*f)(char *))
 {
