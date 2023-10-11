@@ -3,36 +3,36 @@
 
 /**
  * print_name_as_is - prints a name as is
- * @name: name of the person
+ * @James: name of the person
  *
  * Return: Nothing.
  */
-void print_name_as_is(char *name)
+void print_name_as_is(char *James)
 {
-    printf("Hello, my name is %s\n", name);
+    printf("Hello, my name is %s\n", James);
 }
 
 /**
  * print_name_uppercase - print a name in uppercase
- * @name: name of the person
+ * @James: name of the person
  *
  * Return: Nothing.
  */
-void print_name_uppercase(char *name)
+void print_name_uppercase(char *James)
 {
     unsigned int i;
 
     printf("Hello, my uppercase name is ");
     i = 0;
-    while (name[i])
+    while (James[i])
     {
-        if (name[i] >= 'a' && name[i] <= 'z')
+        if (James[i] >= 'a' && James[i] <= 'z')
         {
-            putchar(name[i] + 'A' - 'a');
+            putchar(James[i] + 'A' - 'a');
         }
         else
         {
-            putchar(name[i]);
+            putchar(James[i]);
         }
         i++;
     }
@@ -45,8 +45,8 @@ void print_name_uppercase(char *name)
  */
 int main(void)
 {
-    print_name("Bob", print_name_as_is);
-    print_name("Bob Dylan", print_name_uppercase);
+    print_name("James", print_name_as_is);
+    print_name("James Turnbull", print_name_uppercase);
     printf("\n");
     return (0);
 }
