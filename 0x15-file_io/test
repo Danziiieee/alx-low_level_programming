@@ -1,0 +1,49 @@
+int main(int __attribute__((__unused__)) argc, char *argv[])
+267 {
+268     Elf64_Ehdr *header;
+269     int o, r;
+270
+271     if (argc != 2)
+272     {
+273         dprintf(STDERR_FILENO, "Usage: %s <filename>\n", argv[0]);
+274         exit(1);
+275     }
+276
+277     o = open(argv[1], O_RDONLY);
+278         if (o == -1)
+279     {
+280         close_elf(o);
+281         dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
+282         exit(98);
+283     }
+284     header = malloc(sizeof(Elf64_Ehdr));
+285     if (header == NULL)
+286     {
+287         close_elf(o);
+288         dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
+289         exit(98);
+290     }
+291     r = read(o, header, sizeof(Elf64_Ehdr));
+292     if (r == -1)
+293     {
+294         free(header);
+295         close_elf(o);
+296         dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
+297         exit(98);
+298     }
+299
+300     check_elf(header->e_ident);
+301     printf("ELF Header:\n");
+302     print_magic(header->e_ident);
+303     print_class(header->e_ident);
+304     print_data(header->e_ident);
+305     print_version(header->e_ident);
+306     print_osabi(header->e_ident);
+307     print_abi(header->e_ident);
+308     print_type(header->e_type, header->e_ident);
+309     print_entry(header->e_entry, header->e_ident);
+310
+311     free(header);
+312     close_elf(o);
+313     return (0);
+314 }
