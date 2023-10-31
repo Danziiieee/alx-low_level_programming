@@ -7,12 +7,12 @@
 
 void check_IO_stat(int stat, int fd, char *filename, char mode);
 /**
- * main - funct copies the content of the one file to the other
- * @argc: The argument count
- * @argv: the argument passed
- *
- * Return: 1 on success, exit otherwise
- */
+* main - funct copies the content of the one file to the other
+* @argc: The argument count
+* @argv: the argument passed
+*
+* Return: 1 on success, exit otherwise
+*/
 int main(int argc, char *argv[])
 {
 	int src, dest, n_read = 1024, wrote, close_src, close_dest;
@@ -45,14 +45,15 @@ int main(int argc, char *argv[])
 }
 
 /**
- * check_IO_stat - funct checks if a file can be opened or closed
- * @stat: file descriptor of file to be opened
- * @filename: name of file
- * @mode: closing or opening
- * @fd: file descriptor
- *
- * Return: void
- */
+* check_IO_stat - funct checks if a file can be opened or closed
+* @stat: file descriptor of file to be opened
+* @filename: name of file
+* @mode: closing or opening
+* @fd: file descriptor
+*
+* Return: void
+*/
+
 void check_IO_stat(int stat, int fd, char *filename, char mode)
 {
 	if (mode == 'C' && stat == -1)
