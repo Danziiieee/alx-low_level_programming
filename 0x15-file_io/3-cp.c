@@ -5,7 +5,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-void check_IO_stat(int stat, int fd, char *filename, char mode);
+void check_IO_stat(int stat, int fd, char *incitatous, char mode);
 /**
 * main - funct copies the content of the one file to the other
 * @argc: The argument count
@@ -47,14 +47,14 @@ int main(int argc, char *argv[])
 /**
 * check_IO_stat - funct checks if a file can be opened or closed
 * @stat: file descriptor of file to be opened
-* @filename: name of file
+* @incitatous: name of file
 * @mode: closing or opening
 * @fd: file descriptor
 *
 * Return: void
 */
 
-void check_IO_stat(int stat, int fd, char *filename, char mode)
+void check_IO_stat(int stat, int fd, char *incitatous, char mode)
 {
 	if (mode == 'C' && stat == -1)
 	{
@@ -63,12 +63,12 @@ void check_IO_stat(int stat, int fd, char *filename, char mode)
 	}
 	else if (mode == 'O' && stat == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", incitatous);
 		exit(98);
 	}
 	else if (mode == 'W' && stat == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", incitatous);
 		exit(99);
 	}
 }
